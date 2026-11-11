@@ -38,7 +38,14 @@ return [
     'google' => [
         'client_id' => env('GOOGLE_CLIENT_ID'),
         'client_secret' => env('GOOGLE_CLIENT_SECRET'),
-        'redirect' => env('GOOGLE_REDIRECT_URI', env('APP_URL', 'http://localhost:8000') . '/auth/google/callback'),
+        'redirect' => (function () {
+            $uri = env('GOOGLE_REDIRECT_URI');
+            if (!empty($uri) && !str_contains($uri, '${APP_URL}')) {
+                return $uri;
+            }
+            $base = env('APP_URL', 'https://data-generator-five.vercel.app');
+            return rtrim($base, '/') . '/auth/google/callback';
+        })(),
         'guzzle' => [
             'verify' => env('GOOGLE_SSL_VERIFY', false),
         ],
