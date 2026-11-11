@@ -19,7 +19,7 @@ return Application::configure(basePath: dirname(__DIR__))
     ->booting(function ($app) {
         // Paksa storage path ke /tmp di lingkungan serverless/Vercel
         if (env('VERCEL') || isset($_ENV['VERCEL']) || isset($_ENV['APP_STORAGE_PATH'])) {
-            $app->useStoragePath(env('APP_STORAGE_PATH', '/tmp/storage'));
+            $app->useStoragePath(env('APP_STORAGE_PATH', '/tmp'));
         }
     })
     ->create();
