@@ -48,7 +48,7 @@
     --radius-pill: 9999px;
 
     --sidebar-width: 250px;
-    --font-sans: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font-sans: 'Plus Jakarta Sans', 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     --font-mono: 'IBM Plex Mono', SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
 
@@ -1370,93 +1370,388 @@ html, body {
 }
 
 /* ============================================================================
-   Authentication Screen Styling
+   Authentication Screen Styling (Qanun & Ligno Split-Screen Studio)
    ============================================================================ */
 
 .auth-body {
     min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    background-color: #ffffff;
+    font-family: var(--font-sans);
+    color: #1e293b;
+    overflow-x: hidden;
+    overflow-y: auto !important;
+}
+
+/* Full-Screen Split Container */
+.split-auth-screen {
+    display: flex;
+    min-height: 100vh;
+    width: 100%;
+    flex-direction: row;
+    background-color: #ffffff;
+}
+
+/* --------------------------------------------------------------------------
+   LEFT SIDE: Editorial Showcase (Hotelook Style: Warm Linen, Quote & Campus Skyline)
+   -------------------------------------------------------------------------- */
+.split-auth__hero-column {
+    flex: 1.15;
+    padding: 16px;
+    display: flex;
+    box-sizing: border-box;
+    min-height: 100vh;
+}
+
+.hero-showcase-card {
+    width: 100%;
+    border-radius: 24px;
+    background-color: #faf7f0;
+    background: linear-gradient(175deg, #fbf9f4 0%, #faf6ef 50%, #f4ede0 100%);
+    position: relative;
+    overflow: hidden;
+    padding: 56px 52px 0 52px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 1px solid #e8e2d5;
+    box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.03);
+    box-sizing: border-box;
+}
+
+/* Showcase Quote Area (Enlarged & Prominent in Poppins) */
+.showcase-quote-area {
+    position: relative;
+    z-index: 2;
+    max-width: 600px;
+    margin-bottom: 20px;
+}
+
+.quote-symbol {
+    font-family: 'Poppins', Georgia, serif;
+    font-size: 64px;
+    font-weight: 700;
+    color: #f97316;
+    line-height: 1;
+}
+
+.quote-symbol--start {
+    display: block;
+    margin-bottom: 6px;
+}
+
+.quote-symbol--end {
+    display: block;
+    text-align: right;
+    margin-top: 6px;
+}
+
+.quote-main-statement {
+    font-family: 'Poppins', var(--font-sans);
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 1.42;
+    color: #0f172a;
+    margin: 0;
+    letter-spacing: -0.025em;
+}
+
+/* Bottom: Architectural Vector Skyline Illustration (Hotelook Style) */
+.showcase-illustration-wrapper {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    margin-top: auto;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    line-height: 0;
+}
+
+.architectural-svg {
+    width: 100%;
+    height: auto;
+    max-height: 250px;
+    display: block;
+}
+
+/* --------------------------------------------------------------------------
+   RIGHT SIDE: Modern Form Column (Centered, Clean, High Contrast)
+   -------------------------------------------------------------------------- */
+.split-auth__form-column {
+    flex: 1;
+    min-height: 100vh;
+    background-color: #ffffff;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: var(--ground);
-    padding: 20px;
+    padding: 44px 56px;
+    box-sizing: border-box;
 }
 
-.auth-wrap {
+.login-box-wrapper {
     width: 100%;
-    max-width: 400px;
+    max-width: 370px;
 }
 
-.auth-card {
-    background-color: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-sheet);
-    padding: 32px 28px;
-}
-
-.auth-card__brand {
+/* Centered Brand Mark */
+.form-center-brand {
     display: flex;
     justify-content: center;
     margin-bottom: 20px;
 }
 
-.auth-card__heading {
+.center-brand-logo {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    background-color: #0f172a;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.1);
+}
+
+/* Form Heading */
+.form-header-center {
     text-align: center;
     margin-bottom: 24px;
 }
 
-.auth-title {
-    font-size: 18px;
-    font-weight: 600;
-    color: var(--text);
+.form-heading {
+    font-size: 26px;
+    font-weight: 700;
+    color: #0f172a;
     margin: 0 0 6px 0;
+    letter-spacing: -0.025em;
 }
 
-.auth-subtitle {
-    font-size: 12px;
-    color: var(--muted);
+.form-subheading {
+    font-size: 13.5px;
+    color: #64748b;
     margin: 0;
+    line-height: 1.5;
 }
 
-.auth-form {
+/* Alerts */
+.alert-box {
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-size: 13px;
+    margin-bottom: 18px;
+    line-height: 1.45;
+}
+
+.alert-box--success {
+    background-color: #ecfdf5;
+    border: 1px solid #a7f3d0;
+    color: #065f46;
+}
+
+.alert-box--danger {
+    background-color: #fef2f2;
+    border: 1px solid #fecaca;
+    color: #991b1b;
+}
+
+/* Inputs & Form */
+.login-form-main {
     display: flex;
     flex-direction: column;
-    gap: 16px;
 }
 
-.form-group {
+.login-form-main > .form-field-group {
+    margin-bottom: 16px;
+}
+
+.form-field-group {
     display: flex;
     flex-direction: column;
     gap: 6px;
 }
 
-.credentials-box {
+.field-label-split {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 8px 12px;
-    border: 1px dashed var(--border-dark);
-    border-radius: var(--radius-control);
-    background-color: var(--raised);
-    font-size: 11px;
 }
 
-.credentials-box__label {
-    color: var(--muted);
+.field-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #334155;
 }
 
-.credentials-box__code {
-    color: var(--accent-text);
+.field-help-link {
+    font-size: 12px;
     font-weight: 500;
+    color: #0d9488;
+    text-decoration: none;
+    cursor: pointer;
 }
 
-.auth-card__footer {
+.field-help-link:hover {
+    text-decoration: underline;
+    color: #0f766e;
+}
+
+.field-input {
+    width: 100%;
+    height: 44px;
+    padding: 0 14px;
+    background-color: #ffffff;
+    border: 1px solid #cbd5e1;
+    border-radius: 10px;
+    font-size: 14px;
+    color: #0f172a;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+    box-sizing: border-box;
+}
+
+.field-input:focus {
+    outline: none;
+    border-color: #0f172a;
+    box-shadow: 0 0 0 3px rgba(15, 23, 42, 0.08);
+}
+
+.field-input::placeholder {
+    color: #94a3b8;
+}
+
+.form-options-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.remember-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: #475569;
+    cursor: pointer;
+    user-select: none;
+}
+
+.remember-checkbox {
+    width: 16px;
+    height: 16px;
+    border-radius: 4px;
+    border: 1px solid #cbd5e1;
+    accent-color: #0f172a;
+    cursor: pointer;
+}
+
+/* Divider (Placed cleanly between credentials and instant SSO) */
+.auth-divider {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 2px 0 16px 0;
+}
+
+.auth-divider__line {
+    flex: 1;
+    height: 1px;
+    background-color: #e2e8f0;
+}
+
+.auth-divider__label {
+    font-size: 11.5px;
+    color: #94a3b8;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+}
+
+/* Google SSO (Placed directly above Masuk ke Dashboard) */
+.sso-wrapper {
+    margin-bottom: 10px;
+}
+
+.btn-sso-google {
+    width: 100%;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background-color: #ffffff;
+    border: 1px solid #cbd5e1;
+    border-radius: 10px;
+    font-size: 13.5px;
+    font-weight: 600;
+    color: #1e293b;
+    text-decoration: none;
+    transition: all 0.16s cubic-bezier(0.16, 1, 0.3, 1);
+    cursor: pointer;
+    box-sizing: border-box;
+}
+
+.btn-sso-google:hover {
+    background-color: #f8fafc;
+    border-color: #94a3b8;
+    transform: translateY(-1px);
+    box-shadow: 0 3px 8px rgba(15, 23, 42, 0.06);
+}
+
+.btn-sso-google:active {
+    transform: scale(0.99);
+}
+
+.btn-submit-action {
+    width: 100%;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background-color: #0f172a;
+    color: #ffffff;
+    border: none;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.16s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 2px 6px rgba(15, 23, 42, 0.15);
+}
+
+.btn-submit-action:hover {
+    background-color: #1e293b;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px rgba(15, 23, 42, 0.2);
+}
+
+.btn-submit-action:active {
+    transform: scale(0.99);
+    box-shadow: 0 2px 4px rgba(15, 23, 42, 0.1);
+}
+
+.form-compliance-note {
     margin-top: 24px;
-    padding-top: 16px;
-    border-top: 1px solid var(--rule);
+    font-size: 11.5px;
+    line-height: 1.5;
+    color: #94a3b8;
     text-align: center;
-    font-size: 11px;
-    color: var(--faint);
+}
+
+/* Responsive */
+@media (max-width: 960px) {
+    .split-auth-screen {
+        flex-direction: column;
+    }
+
+    .split-auth__hero-column {
+        display: none;
+    }
+
+    .split-auth__form-column {
+        min-height: 100vh;
+        padding: 40px 24px;
+    }
 }
 
 /* ============================================================================
