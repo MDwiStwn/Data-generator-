@@ -1,26 +1,23 @@
 {
     "version": 2,
-    "builds": [
-        {
-            "src": "api/index.php",
-            "use": "vercel-php"
-        },
-        {
-            "src": "package.json",
-            "use": "@vercel/static-build",
-            "config": {
-                "distDir": "public"
-            }
+    "framework": null,
+    "functions": {
+        "api/index.php": {
+            "runtime": "vercel-php"
         }
-    ],
+    },
     "routes": [
         {
             "src": "/build/(.*)",
             "dest": "/public/build/$1"
         },
         {
-            "src": "/favicon.ico",
-            "dest": "/public/favicon.ico"
+            "src": "/(favicon\\.ico|robots\\.txt)",
+            "dest": "/public/$1"
+        },
+        {
+            "src": "/(.*\\.(?:css|js|png|jpg|jpeg|gif|svg|ico|ttf|woff|woff2|eot|otf|webp|avif|txt))$",
+            "dest": "/public/$1"
         },
         {
             "src": "/(.*)",
@@ -30,7 +27,7 @@
     "env": {
         "APP_ENV": "production",
         "APP_KEY": "base64:EdOmWjpSR24miKKtY5CAoW9RdIUohFBVCuDYrZqXNFE=",
-        "APP_DEBUG": "true",
+        "APP_DEBUG": "false",
         "APP_URL": "https://data-generator-five.vercel.app",
         "APP_STORAGE_PATH": "/tmp",
         "VIEW_COMPILED_PATH": "/tmp/views",
