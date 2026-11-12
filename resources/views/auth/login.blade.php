@@ -193,7 +193,7 @@
                     @csrf
 
                     <div class="form-field-group">
-                        <label for="email" class="field-label">Alamat Email</label>
+                        <label for="email" class="field-label">Email</label>
                         <input id="email"
                                type="email"
                                name="email"
